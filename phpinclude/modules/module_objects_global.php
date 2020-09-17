@@ -7,7 +7,8 @@ $service_elements = array(
     'TABLE' => '',
     'KY' => '',
     'SRV' => null,
-    'SRV_fix' => null
+    'SRV_fix' => null,
+    'DATA' => null
 );
 
 $sql_user = array(
@@ -27,5 +28,5 @@ $curl_elemnts = array(
 );
 
 //CLASS VARIABLES
-$gui; $sql; $json; $encryptor; $curl; $post; $tokens; $getset; $types; $dates; $filters; $encoder; $services; $scorpion;
+$gui; $sql; $json; $encryptor; $curl; $post; $tokens; $getset; $types; $dates; $filters; $encoder; $services; $scorpion; $gui_elements; $cookies;
 ?>

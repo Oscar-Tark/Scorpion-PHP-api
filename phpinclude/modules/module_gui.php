@@ -47,4 +47,71 @@ class Gui_element
 		return $class->__type();
 	}
 }
+
+global $tags, $internal_tags;
+class GUI_elements
+{
+	function __construct()
+	{	
+		global $tags, $internal_tags;
+		
+		$tags = array(
+		"button" => "button",
+		"input" => "button",
+		"label" => "label",
+		"img" => "img",
+		);
+		
+		$internal_tags = array(
+		0 => "id",
+		1 => "class",
+		2 => "parent",
+		3 => "onclick",
+		4 => "onhover",
+		5 => "onexit"
+		);
+		return;
+	}
+	
+	function createcontrol($tag, $id, $class, $value, $internal_value, $onclick)
+	{
+		global $tags, $internal_tags, $gui_elements;
+		$control = array();
+		$final_control = "";
+		
+		array_push($control, "id='" . $id . "'");
+		array_push($control, "class='" . $class . "'");
+		array_push($control, "value='" . $value . "'");
+		array_push($control, "onclick=\"" . $onclick . "\"");
+		
+		if(in_array($tag, $tags))
+			$final_control = $final_control . $this->tags($this->create($control), $tag, $internal_value);
+		echo $final_control;
+	}
+	
+	function createmenu($title, $items)
+	{
+		//items = array
+		echo "";
+		return;
+	}
+	
+	private function tags($control, $tag, $internal_value)
+	{
+		return "<" . $tag . " " . $control . ">" . $internal_value . "</" . $tag . ">";
+	}
+	
+	private function create($control)
+	{
+		$final_control = "";
+		foreach($control as $element)
+			$final_control = $final_control . " " . $element;
+		return $final_control;
+	}
+	
+	function createcontainer()
+	{
+		return;
+	}
+}
 ?>

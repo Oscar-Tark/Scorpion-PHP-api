@@ -61,7 +61,15 @@ function sql_set($table, $values)
 
 function sql_max($table, $column)
 {
-    return send("SELECT MAX(".$column.") AS maximum_v FROM ".$table);
+    return $this->send("SELECT MAX(".$column.") AS maximum_v FROM ".$table);
+}
+
+function sql_check_exists($table, $column, $value)
+{
+	//returns bool
+	if($this->$return_first_row($this->send("SELECT " . $column . " FROM " . $table . " WHERE " . $column . " = '" . $value . "'")) == null)
+		return false;
+	return true;
 }
 
 function sql_check_contains_row($table, $conditions)

@@ -8,5 +8,11 @@ class Services
         $service_elements['SRV_fix'] = $extension;
         return;
     }
+    
+    function set_data($data)
+    {
+		global $service_elements;
+		$service_elements['DATA'] = $data;
+	}
 }
 ?>
