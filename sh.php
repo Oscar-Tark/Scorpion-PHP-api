@@ -34,13 +34,15 @@ class Servicehandler
         $d_project = $encoder->decode_64($post->check_POST("project"));
         $e_data = $encryptor->encrypt($encoder->encode_utf8($encoder->decode_64($post->check_POST("data"))));
         $d_data = $post->check_POST("data");
-        $data = $encoder->decode_64($post->check_POST("data"));;
+        
+        //UNSAFE DEBUG
+        //$data = $encoder->decode_64($post->check_POST("data"));;
 
         //CURL
         //Service file.
         $services->create_settings($d_service . "_service", ".php");
-        echo $data;
         $services->set_data($data);
+        
         //CURL url without the file.
         $curl->create_settings("http://localhost/scorpion_" . $d_project . "/services/");
         $curl->curl_local_request($date, $d_data);

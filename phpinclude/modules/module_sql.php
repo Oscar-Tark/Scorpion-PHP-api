@@ -28,6 +28,14 @@ function sql_table_check($schema, $name)
     return true;
 }
 
+function sql_table_check_custom($schema, $name)
+{
+    global $types;
+    if($types->ifnull($this->return_first_row($this->send("SELECT * FROM information_schema.tables WHERE table_schema = '".$schema."' AND table_name = '".$name."' LIMIT 1"))))
+        return false;
+    return true;
+}
+
 function sql_table_create($name, $values)
 {
     $this->send("CREATE TABLE IF NOT EXISTS ".$name." (".$values.") ENGINE=INNODB;");

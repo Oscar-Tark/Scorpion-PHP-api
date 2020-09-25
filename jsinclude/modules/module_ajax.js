@@ -22,7 +22,9 @@ class Ajax
 
         try
         {
+			///DEBUG!
 			console.log("AJAX request in execution | " + data + "££" + concat+"sh.php" + "££");
+			///<--
             xmlhttp.open("POST", concat + "sh.php", true);
             xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
             xmlhttp.send(data);

@@ -15,7 +15,10 @@ class Cookies
     {
 		echo $cookie_path . $cookie_name;
 		if(!isset($_COOKIE[$cookie_path . $cookie_name]))
+		{
+			echo "Cookie is not set.";
 			return false;
+		}
 		else {
 			echo "Cookie '" . $cookie_name . "' is set!<br>";
 			echo "Value is: " . $_COOKIE[$cookie_path . $cookie_name];
@@ -24,9 +27,9 @@ class Cookies
 		return;
 	}
 
-	function set_cookie_($name, $value, $project)
+	function set_cookie_($cookie_name, $value, $project)
 	{
-		setcookie($name, $value, time() + (86400 * 30), $this->cookie_path($project));
+		setcookie($cookie_name, $value, time() + (86400 * 30), $this->cookie_path($project) . "; samesite=strict");
 		return;
 	}
 	
