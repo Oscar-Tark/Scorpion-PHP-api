@@ -6,6 +6,13 @@ class GUI
 		//Takes the name of the module + the name of the service
 		//Make into CURL request for async
 		include_once("../scorpion_" . $project . "/gui/gui_elements/module_gui_" . $name . ".php");
+		return;
+	}
+	
+	function loadcss($name)
+	{
+		echo "<link rel='stylesheet' href='./cssinclude/".$name.".css'>";
+		return;
 	}
 }
 
@@ -72,7 +79,7 @@ class GUI_elements
 		);
 		return;
 	}
-	
+		
 	function createcontrol($tag, $id, $class, $value, $internal_value, $onclick)
 	{
 		global $tags, $internal_tags, $gui_elements;
@@ -92,7 +99,7 @@ class GUI_elements
 	function createmenu($title, $items)
 	{
 		//items = array
-		echo "";
+		echo "<div class='menu' id='menu'><div id='menu_title' class='menu_title'>" . $title . "</div></div>";
 		return;
 	}
 	

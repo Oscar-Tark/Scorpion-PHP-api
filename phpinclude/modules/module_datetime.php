@@ -17,5 +17,10 @@ class Dates
     {
         return date("Y-m-d h:i:s", strtotime($datetime));
     }
+    
+    function date_today()
+    {
+		return date("Y_m_d");
+	}
 }
 ?>

@@ -14,5 +14,12 @@ class Services
 		global $service_elements;
 		$service_elements['DATA'] = $data;
 	}
+	
+	//Loads custom JS from a services folder
+	function load_service_js($project, $name)
+	{
+        echo "<script src='../scorpion_" . $project . "/js/".$name.".js'></script>";
+		return;
+	}
 }
 ?>

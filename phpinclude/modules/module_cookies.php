@@ -1,29 +1,14 @@
 <?php
 class Cookies
 {
-    function __construct()
-    {
-
-    }
-
-    function __destruct()
-    {
-        
-    }
-    
     function check_cookie($cookie_path, $cookie_name)
     {
-		echo $cookie_path . $cookie_name;
-		if(!isset($_COOKIE[$cookie_path . $cookie_name]))
-		{
-			echo "Cookie is not set.";
+		//Remove path for root directory cookies
+		//echo $cookie_path . $cookie_name;
+		if(!isset($_COOKIE[/*$cookie_path . */$cookie_name]))
 			return false;
-		}
-		else {
-			echo "Cookie '" . $cookie_name . "' is set!<br>";
-			echo "Value is: " . $_COOKIE[$cookie_path . $cookie_name];
-			return $_COOKIE[$cookie_path . $cookie_name];
-		}
+		else
+			return $_COOKIE[/*$cookie_path . */$cookie_name];
 		return;
 	}
 

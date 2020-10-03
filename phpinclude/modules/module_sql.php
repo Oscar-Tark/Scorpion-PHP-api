@@ -82,7 +82,9 @@ function sql_check_exists($table, $column, $value)
 
 function sql_check_contains_row($table, $conditions)
 {
-    if($this->return_first_row($this->sql_get($table, $conditions)) == null)
+    $result = $this->sql_get($table, $conditions);
+    
+    if(mysqli_num_rows($result) == 0)
         return false;
     return true;
 }
@@ -104,6 +106,24 @@ function return_first_row($sql_result)
     {
         return null;
     }
+}
+
+function sql_to_bson_array($table)
+{
+	$values = "[";
+	$num = mysqli_num_rows($table);
+	$i = 1;
+    if($num > 0)
+    {
+        while($row = $table->fetch_assoc())
+        {
+             $values = $values . '{ "uid": "' . $row["u_id"] . '", "width" : "'.$row["width"].'", "height" : "'.$row["height"].'", "os" : "'.$row["os"].'", "appcodename" : "'.$row["appcodename"].'", "appname" : "'.$row["appname"].'", "appversion" : "'.$row["appversion"].'", "useragent" : "'.$row["useragent"].'", "geolocation" : "'.$row["geolocation"].'", "pluginlist" : "'.$row["pluginlist"].'", "language" : "'.$row["language"].'", "languages" : "'.$row["languages"].'", "hardwareconcurrency" : "'.$row["hardwareconcurrency"].'", "donottrack" : "'.$row["donottrack"].'", "touchpoints" : "'.$row["touchpoints"].'", "oscpu" : "'.$row["oscpu"].'", "mediacapabilities" : "'.$row["mediacapabilities"].'", "mimetypes" : "'.$row["mimetypes"].'", "permissions" : "'.$row["permissions"].'", "vendor" : "'.$row["vendor"].'", "vendorsub" : "'.$row["vendorsub"].'", "cookieenabled" : "'.$row["cookieenabled"].'", "buildid" : "'.$row["buildid"].'", "mediadevices" : "'.$row["mediadevices"].'", "serviceworker" : "'.$row["serviceworker"].'", "credentials" : "'.$row["credentials"].'", "clipboard" : "'.$row["clipboard"].'", "webdriver" : "'.$row["webdriver"].'", "product" : "'.$row["product"].'", "online" : "'.$row["online"].'", "storage" : "'.$row["storage"].'", "javaenabled" : "'.$row["javaenabled"].'", "referer" : "'.$row["referer"].'", "timestamp" : "'.$row["timestamp"].'"}';
+             if($i != $num)
+				$values = $values . ',';
+             $i++;
+		}
+    }
+	return $values . "]";
 }
 
 function sql_query_($quer)
