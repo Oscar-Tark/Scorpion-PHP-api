@@ -77,19 +77,29 @@ class GUI_elements
 		4 => "onhover",
 		5 => "onexit"
 		);
+		
+		$event_tags = array(
+		0 => "onclick",
+		1 => "onhover",
+		2 => "onexit",
+		);
+		return;
+	}
+	
+	function create_settings($default_src_dir)
+	{
 		return;
 	}
 		
-	function createcontrol($tag, $id, $class, $value, $internal_value, $onclick)
+	function createcontrol($tag, $id, $class, $value, $internal_value)
 	{
-		global $tags, $internal_tags, $gui_elements;
+		global $tags, $internal_tags, $gui_elements, $hrv_;
 		$control = array();
 		$final_control = "";
 		
 		array_push($control, "id='" . $id . "'");
 		array_push($control, "class='" . $class . "'");
 		array_push($control, "value='" . $value . "'");
-		array_push($control, "onclick=\"" . $onclick . "\"");
 		
 		if(in_array($tag, $tags))
 			$final_control = $final_control . $this->tags($this->create($control), $tag, $internal_value);
@@ -99,8 +109,35 @@ class GUI_elements
 	function createmenu($title, $items)
 	{
 		//items = array
-		echo "<div class='menu' id='menu'><div id='menu_title' class='menu_title'>" . $title . "</div></div>";
+		echo "<div class=\"menu\" id=\"menu\"><div id=\"menutitle\" class=\"menutitle\"><label>" . $title . "</label></div><div id=\"menuitems\" class=\"menuitems\">" . $this->createmenulinks($items) . "</div></div>";
 		return;
+	}
+	
+	function createtopbanner($image1, $image2)
+	{
+		echo "<div id=\"topbanner\" class=\"topbanner\"><img class=\"topbannerimage\" src=\"./src/".$image2."\"/>";
+		return;
+	}
+	
+	function createcontent($type_dir)
+	{
+		//Gets content from directories and text files
+		$content = "<div id>";
+		return;
+	}
+	
+	private function createmenulinks($items)
+	{
+		$menu = "";
+		//Creates all menu links for all pages
+		foreach($items as $item)
+			$menu = $menu . "<button id=\"" .$item[2]. "\">" . $this->tags("", "label", $item[0]) . "</button>";
+		return $menu;
+	}
+	
+	private function create__d_($type, $id, $class)
+	{
+		return "__d_('".$type."', '".$id."', '".$class."');";
 	}
 	
 	private function tags($control, $tag, $internal_value)

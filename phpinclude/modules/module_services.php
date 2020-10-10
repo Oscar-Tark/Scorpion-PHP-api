@@ -21,5 +21,12 @@ class Services
         echo "<script src='../scorpion_" . $project . "/js/".$name.".js'></script>";
 		return;
 	}
+	
+	function load_modules($project)
+	{
+		foreach(glob(("../scorpion_" . $project . "/modules/*.php")) as $filename)
+			include_once($filename);
+		return;
+	}
 }
 ?>

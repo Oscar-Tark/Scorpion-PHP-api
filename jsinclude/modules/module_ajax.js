@@ -1,11 +1,11 @@
 class Ajax
 {
-    send_ajax(request, token, concat)
+    send_ajax(request, token, concat, custom_data)
     {
 		if(concat == null)
 			concat = "./";
 		
-        var data = this.get_request(request, token);
+        var data = this.get_request(request, token, custom_data);
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function()
         {
@@ -36,11 +36,13 @@ class Ajax
         return;
     }
 
-    get_request(request, token)
+    get_request(request, token, custom_data)
     {
         //Data encoded but not encrypted. Reason is there is no point in encrypting even with AES in JS. If you can see the salt value, you can easily decrypt it. Data is however HASHED in PHP.
-        return "currentDate="+c_datetime.get_timestamp()+"&project=" + window.btoa(unescape(encodeURIComponent(c_local.get_local("project")))) + "&service=" + window.btoa(unescape(encodeURIComponent(c_local.get_local("service")))) + "&data=" + window.btoa(unescape(encodeURIComponent(c_local.get_local("request")))) + "&ky=" + window.btoa(unescape(encodeURIComponent(c_local.get_local("pwd")))) + 
-        "&user=" + window.btoa(unescape(encodeURIComponent(c_local.get_local("user"))));
+        if(custom_data == null || custom_data == "")
+			return "currentDate="+c_datetime.get_timestamp()+"&project=" + window.btoa(unescape(encodeURIComponent(c_local.get_local("project")))) + "&service=" + window.btoa(unescape(encodeURIComponent(c_local.get_local("service")))) + "&data=" + window.btoa(unescape(encodeURIComponent(c_local.get_local("request")))) + "&ky=" + window.btoa(unescape(encodeURIComponent(c_local.get_local("pwd")))) + "&user=" + window.btoa(unescape(encodeURIComponent(c_local.get_local("user"))));
+		else
+			return "currentDate="+c_datetime.get_timestamp()+"&project=" + window.btoa(unescape(encodeURIComponent(c_local.get_local("project")))) + "&service=" + window.btoa(unescape(encodeURIComponent(c_local.get_local("service")))) + "&data=" + window.btoa(unescape(encodeURIComponent(custom_data))) + "&ky=" + window.btoa(unescape(encodeURIComponent(c_local.get_local("pwd")))) + "&user=" + window.btoa(unescape(encodeURIComponent(c_local.get_local("user"))));
     }
     
     final_ajax(form, data)

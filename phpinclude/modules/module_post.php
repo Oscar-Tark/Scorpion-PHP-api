@@ -8,7 +8,7 @@ class Servicepost
         if(isset($_POST[$value]) && !empty($_POST[$value]))
             return $filters->filter($_POST[$value]);
         else
-            die("1");
+            die("POST ERROR: VAR NOT FOUND");
     }
 
     //NO FILTERS

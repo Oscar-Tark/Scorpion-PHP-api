@@ -75,7 +75,7 @@ function sql_max($table, $column)
 function sql_check_exists($table, $column, $value)
 {
 	//returns bool
-	if($this->$return_first_row($this->send("SELECT " . $column . " FROM " . $table . " WHERE " . $column . " = '" . $value . "'")) == null)
+	if($this->return_first_row($this->send("SELECT " . $column . " FROM " . $table . " WHERE " . $column . " = '" . $value . "'")) == null)
 		return false;
 	return true;
 }

@@ -22,5 +22,13 @@ Class Tokens
             $json->JEO("Unable to verify token: ".$token);
         return;
     }
+    
+    function verify_token_custom($token, $user, $table)
+    {        
+		global $sql, $service_elements, $types, $json, $encryptor;
+        if($types->ifnull($sql->return_first_row($sql->sql_get($table, "token='".$token."' AND user='".$user."'"))['token']))
+            return false;//$json->JEO("Unable to verify token: ".$token);
+        return true;
+	}
 }
 ?>
