@@ -15,6 +15,8 @@ class Ajax
                 var JSON_= JSON.parse(this.responseText);
                 if(JSON_.TYPE == 'KY')
                     c_ajax.send_ajax(request, JSON_.DATA);
+                else if(JSON_.TYPE == 'EVENT')
+					c_ajax.final_ajax_event(JSON_.FORM, JSON_.DATA);
                 else
 					c_ajax.final_ajax(JSON_.FORM, JSON_.DATA);
             }
@@ -45,8 +47,16 @@ class Ajax
 			return "currentDate="+c_datetime.get_timestamp()+"&project=" + window.btoa(unescape(encodeURIComponent(c_local.get_local("project")))) + "&service=" + window.btoa(unescape(encodeURIComponent(c_local.get_local("service")))) + "&data=" + window.btoa(unescape(encodeURIComponent(custom_data))) + "&ky=" + window.btoa(unescape(encodeURIComponent(c_local.get_local("pwd")))) + "&user=" + window.btoa(unescape(encodeURIComponent(c_local.get_local("user"))));
     }
     
+    final_ajax_event(form, event)
+    {
+		if(event != 'NULL')
+			document.location = './' + event;
+		return;
+	}
+    
     final_ajax(form, data)
     {
+		console.log("final_ajax");
 		if(form == '0')
 			return;
 		c_gui.set_item_value(form, data);

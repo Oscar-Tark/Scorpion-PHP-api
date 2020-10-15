@@ -27,6 +27,15 @@ class Servicepost
             return true;
         return false;
     }
+    
+    function check_GET($value)
+    {
+        global $filters;
+        if(isset($_GET[$value]) && !empty($_GET[$value]))
+            return $filters->filter($_GET[$value]);
+        else
+            return false;
+	}
 
     function detectRequestBody()
     {

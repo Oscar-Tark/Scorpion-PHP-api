@@ -4,11 +4,10 @@ class Cookies
     function check_cookie($cookie_path, $cookie_name)
     {
 		//Remove path for root directory cookies
-		//echo $cookie_path . $cookie_name;
-		if(!isset($_COOKIE[/*$cookie_path . */$cookie_name]))
+		if(!isset($_COOKIE[$cookie_name]))
 			return false;
 		else
-			return $_COOKIE[/*$cookie_path . */$cookie_name];
+			return $_COOKIE[$cookie_name];
 		return;
 	}
 
@@ -18,9 +17,16 @@ class Cookies
 		return;
 	}
 	
+	function renew_cookie($cookie_name, $project)
+	{
+		$cookie = $this->check_cookie("/", $cookie_name);
+		$this->set_cookie_($cookie_name, $cookie, $project);
+		return;
+	}
+	
 	function cookie_path($project)
 	{
-		return "/";//'// . $project . "/";
+		return "/";
 	}
 }
 ?>

@@ -56,5 +56,14 @@ class Servicejson
 	{
 		echo("JSON_OK");
 	}
+	
+	function get_response_type($type)
+	{
+		return array(
+		0 => "RESPONSE",
+		1 => "EVENT",
+		2 => "DATA"
+		)[$type];
+	}
 }
 ?>
