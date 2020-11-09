@@ -1,25 +1,20 @@
 <?php
-$mongodb; $mongodbconnection;
 class Mongodb
 {
+	private $mongodb; private $mongodbconnection;
 	function __construct()
 	{
-		global $mongodb, $mongodbconnection;
-		$mongodb = new MongoDB\Driver\Manager("mongodb://localhost:27017");
-		//$mongoconnection = $mongodb->mongo_connect();
+		$this->mongodb = new MongoDB\Driver\Manager("mongodb://localhost:27017");
 		return;
 	}
 	
 	function mongo_get($db, $collection)
 	{
-		global $mongodbconnection, $mongodb;
 		$flag    = isset($_GET['flag'])?intval($_GET['flag']):0;
 		$message ='';
 
 		if($flag)
-		{
 			$message = $messages[$flag];
-		}
 
 		$filter = [];
 		$options =
@@ -28,7 +23,14 @@ class Mongodb
 		];
 
 		$query = new MongoDB\Driver\Query($filter, $options);
-		return $mongodb->executeQuery($db.'.'.$collection, $query);
+		return $this->mongodb->executeQuery($db.'.'.$collection, $query);
+	}
+	
+	function mongo_count($db, $collection, $subcollection)
+	{
+		$this->mongo_get($db, $collection);
+		var_dump($collection->count());
+		return;
 	}
 }
 ?>

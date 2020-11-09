@@ -64,6 +64,7 @@ function sql_update($table, $conditions, $values)
 function sql_set($table, $values)
 {
     //Takes: string, string
+    //echo "INSERT INTO ".$table." VALUES(".$values.");--";
     return $this->send("INSERT INTO ".$table." VALUES(".$values.");--");
 }
 
