@@ -22,5 +22,10 @@ class Dates
     {
 		return date("Y_m_d");
 	}
+	
+	function timestamp()
+	{
+		return date('Y-m-d H:i:s');
+	}
 }
 ?>
