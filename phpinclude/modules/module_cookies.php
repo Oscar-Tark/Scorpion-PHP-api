@@ -5,15 +5,9 @@ class Cookies
     {
 		//Remove path for root directory cookies
 		if(!isset($_COOKIE[$cookie_name]))
-		{
-			echo "Cookie: false, " . $cookie_name;
 			return false;
-		}
 		else
-		{
-			echo "Cookie: true, " . $cookie_name . ", " . $_COOKIE[$cookie_name];
 			return $_COOKIE[$cookie_name];
-		}
 		return;
 	}
 

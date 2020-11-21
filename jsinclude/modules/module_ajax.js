@@ -11,7 +11,9 @@ class Ajax
         {
             if(this.readyState === 4 && this.status === 200)
             {
-                console.log("Response ["+c_datetime.get_timestamp()+"]: " + this.responseText);
+				///DEBUG!
+                //console.log("Response ["+c_datetime.get_timestamp()+"]: " + this.responseText);
+                ///<--
                 var JSON_= JSON.parse(this.responseText);
                 if(JSON_.TYPE == 'KY')
                     c_ajax.send_ajax(request, JSON_.DATA);
@@ -25,7 +27,7 @@ class Ajax
         try
         {
 			///DEBUG!
-			console.log("AJAX request in execution | " + data + "££" + concat+"sh.php" + "££");
+			//console.log("AJAX request in execution | " + data + "££" + concat+"sh.php" + "££");
 			///<--
             xmlhttp.open("POST", concat + "sh.php", true);
             xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -54,12 +56,17 @@ class Ajax
 		return;
 	}
     
-    final_ajax(form, data)
+    final_ajax(f__, __d)
     {
-		console.log("final_ajax");
-		if(form == '0')
+		///DEBUG!
+		//console.log("final_ajax");
+		//<--
+		if(f__ == '0')
 			return;
-		c_gui.set_item_value(form, data);
+		try {
+		c_gui.set_item_value(f__, __d);
+		}
+		catch{}
 		return;
 	}
 }
