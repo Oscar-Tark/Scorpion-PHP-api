@@ -117,7 +117,7 @@ function sql_count($sql_result)
 function sql_query_($quer)
 {
     $link = $this->sql_connect();
-    $result = $link->query($quer) or die("<div><label>An internal error occured please contact support with the following error code: EC_000DB</label></div>");//("".$link->error.'Query error');
+    $result = $link->query($quer) or die/*("<div><label>An internal error occured please contact support with the following error code: EC_000DB</label></div>");*/("".$link->error.'Query error');
     $link->close();
     return $result;
 }

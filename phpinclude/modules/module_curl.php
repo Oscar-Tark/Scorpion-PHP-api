@@ -51,6 +51,30 @@ class Curler
         return $result;
     }
     
+    function curl_external_get_request_data($URL, $data)
+    {
+        global $curl_elements, $json, $service_elements;
+        $ch = curl_init();
+        
+		curl_setopt($ch, CURLOPT_URL, $URL.'?data/'.$data);
+        $defaults = array(
+            CURLOPT_POST => false,
+            CURLOPT_RETURNTRANSFER => true,
+        );
+        
+        $customHeaders = array(
+			'Accept: text/html'
+		);
+
+		curl_setopt($ch, CURLOPT_HTTPHEADER, $customHeaders);
+        curl_setopt_array($ch, $defaults);
+        
+        $result = curl_exec($ch);
+        //$json->JEO(curl_error($ch));
+        curl_close($ch);
+        return $result;
+    }
+    
     function curl_external_post_request($URL, $data)
     {
         global $curl_elements, $json, $service_elements;
