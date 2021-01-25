@@ -9,6 +9,14 @@ class GUI
 		return;
 	}
 	
+	function draw_module_project($name)
+	{
+		//Takes the name of the module + the name of the service
+		//Make into CURL request for async
+		include_once("./gui/module_gui_" . $name . ".php");
+		return;
+	}
+	
 	function loadcss($name)
 	{
 		echo "<link rel='stylesheet' href='./cssinclude/".$name.".css'>";

@@ -84,10 +84,17 @@ function sql_check_exists($table, $column, $value)
 function sql_check_contains_row($table, $conditions)
 {
     $result = $this->sql_get($table, $conditions);
-    
     if(mysqli_num_rows($result) == 0)
         return false;
     return true;
+}
+
+function result_to_simplerowarray($sql_result)
+{
+	$array_ = array();
+    while($row = $sql_result->fetch_assoc())
+		array_push($array_, $row);
+	return $array_;
 }
 
 function return_first_row($sql_result)

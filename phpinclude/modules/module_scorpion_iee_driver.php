@@ -1,23 +1,32 @@
 <?php
 class ScorpionIEE
 {
-	function set_command($variable_toset, $variable, $uid, $pwd)
+	function set_command($command, $ip, $port)
 	{
 		//Hard coded to 8922
 		global $curl;
-		return $curl->curl_external_post_request("192.168.0.155:8922", "{&scorpion}varset::{&var}".$variable_toset.", {&var}{&quot}".$variable."{&quot}{&scorpion_end}\r\n");
+		return $this->replace_httpok($this->replace_fakes($curl->curl_external_post_request($ip.":".$port, "{&scorpion}".$command."{&scorpion_end}\r\n")));
 	}
 	
-	function get_command($variable, $uid, $pwd)
+	function get_command($variable, $ip, $port)
 	{
 		global $curl;
-		return $this->replace_httpok($this->replace_fakes($curl->curl_external_get_request_data("192.168.0.155:8922", "{&scorpion}{&var}".$variable."{&scorpion_end}")));
-		return;
+		$response = $this->replace_httpok($this->replace_fakes($curl->curl_external_get_request_data($ip.":".$port, "{&scorpion}{&var}".$variable."{&scorpion_end}")));
+		if($response == "NULL")
+			return "An error occured";
+		return $response;
 	}
 	
 	function replace_fakes($response)
 	{
-		return str_replace("{&quot}","'", $response);;
+		return str_replace("{&quot}","'", $response);
+	}
+	
+	function fakes_to_array($response)
+	{
+		$result = str_replace("{&var}","", $response);
+		$result = explode("{&var_end}", $result);
+		return $result;
 	}
 	
 	function replace_httpok($response)

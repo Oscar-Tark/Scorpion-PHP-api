@@ -19,6 +19,7 @@ class GUI
     {
 		return document.getElementById(name).value;
 	}
+	
 	set_item_value(name, value)
 	{
 		c_gui.get_item(name).value = value;

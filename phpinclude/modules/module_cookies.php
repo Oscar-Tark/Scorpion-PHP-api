@@ -26,7 +26,7 @@ class Cookies
 	
 	function cookie_path($project)
 	{
-		return "/";
+		return "/" . $project;
 	}
 	
 	function cookie_dialog($text, $doc, $onaccept, $onnotaccept)

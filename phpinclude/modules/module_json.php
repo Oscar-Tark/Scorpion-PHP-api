@@ -62,7 +62,8 @@ class Servicejson
 		return array(
 		0 => "RESPONSE",
 		1 => "EVENT",
-		2 => "DATA"
+		2 => "DATA",
+		3 => "APP_RESULT",
 		)[$type];
 	}
 }
