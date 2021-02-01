@@ -28,5 +28,5 @@ $curl_elemnts = array(
 );
 
 //CLASS VARIABLES
-$gui; $sql; $json; $encryptor; $curl; $post; $tokens; $getset; $types; $dates; $filters; $encoder; $services; $scorpion; $gui_elements; $cookies;
+$gui; $sql; $json; $genericjson; $encryptor; $curl; $post; $tokens; $getset; $types; $dates; $filters; $encoder; $services; $scorpion; $gui_elements; $cookies;
 ?>

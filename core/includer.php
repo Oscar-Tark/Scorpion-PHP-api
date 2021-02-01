@@ -14,7 +14,7 @@ $includes_templates_functionality = array(
     },
     'JS' => function($path)
     {
-        echo "<script src='".$path."'></script>";
+        echo "<script type='text/javascript' src='".$path."'></script>";
         return;
     },
     'CSS'=> function($path)
@@ -31,11 +31,10 @@ function includes($concatenation_level, $type)
     global $includes_templates, $includes_templates_functionality;
     $concat = "./";
 	//$concatenation_level = (int)((int)($concatenation_level));
-    if($concatenation_level != 0 && $concatenation_level != -1 && $concatenation_level != 88 && $concatenation_level != 87)
+    if($concatenation_level != 0 && $concatenation_level != -1 && $concatenation_level != 88 && $concatenation_level != 87 && $concatenation_level != 89)
         $concat = create_concatenation($concatenation_level);
-    else if($concatenation_level == 88 || $concatenation_level == 87)
+    else if($concatenation_level == 88 || $concatenation_level == 87 || $concatenation_level == 89)
 		$concat = create_concatenation($concatenation_level)."scorpion-php-api/";
-	
     foreach(glob($concat.$includes_templates[$type]) as $filename)
         $includes_templates_functionality[$type]($filename);
     return;

@@ -19,6 +19,18 @@ class Servicepost
         else
             return null;
     }
+    
+    //Gets all post values, checks them and sends back an array
+    function check_POSTALL_AS_ARRAY()
+    {
+		$n = 0; $array = array();
+		foreach($_POST as $post_element)
+		{
+			array_push($array, $post_element);
+			$n++;
+		}
+		return $array;
+	}
 
     function check_POST_format($value)
     {

@@ -26,7 +26,13 @@ class Encryptor
             $randomString .= $characters[rand(0, $charactersLength - 1)];
         return $randomString;
     }
+    
+    function getRandomStringDefaultLength()
+    {
+		return 1024;
+	}
 
+	//Always use with generateRandomString
     function verifyRandomString($string, $table, $column)
     {
 		//FUNCTION RETURNS STRING REGARDLESS IF A NEW TOKEN OR OLD ONE
@@ -37,9 +43,7 @@ class Encryptor
 		    while ($var <= 3)
 		    {
 			    if($var == 3)
-			    {
 					die("Unable to create transaction token");
-			    }
 			
 			    $random = generateRandomString();
 			    if($types->ifnull($sql->return_first_row($sql->sql_get($table, $column."='".$random."'"))))
@@ -51,9 +55,7 @@ class Encryptor
 		    }
 	    }
     	else 
-	    {
 		    return $string;
-	    }
 	}
 	
     function verifyRandomString_test()

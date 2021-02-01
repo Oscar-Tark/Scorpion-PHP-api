@@ -67,4 +67,17 @@ class Servicejson
 		)[$type];
 	}
 }
+
+class GenericJSON
+{
+	function to_json($array)
+	{
+        return json_encode($array);
+    }
+    
+    function from_JSON($JSON)
+    {
+		return json_decode($JSON, true);
+	}
+}
 ?>

@@ -13,5 +13,11 @@ class Javascript
 	{
 		return "onclick=\"javascript: ".$function."\"";
 	}
+	
+	function js_out($javascript)
+	{
+		echo("<script type='text/javascript'>" . $javascript . "</script>");
+		return;
+	}
 }
 ?>
