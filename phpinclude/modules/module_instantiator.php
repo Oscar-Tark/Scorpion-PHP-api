@@ -4,7 +4,7 @@ class Instantiator
     //Use require instead in v2.0
     function instantiate_classes()
     {
-        global $filters, $encoding, $sql, $dates, $encryptor, $post, $curl, $json, $genericjson, $tokens, $getset, $types, $encoder, $services, $scorpion, $gui, $gui_elements, $cookies;
+        global $filters, $encoding, $sql, $dates, $encryptor, $post, $curl, $json, $genericjson, $tokens, $getset, $types, $encoder, $services, $scorpion, $gui, $gui_elements, $cookies, $javascript;
         
 		$gui = new GUI;
         $sql = new Servicesql;
@@ -23,6 +23,7 @@ class Instantiator
 		$gui_elements = new Gui_elements;
 		$cookies = new Cookies;
 		$genericjson = new GenericJSON;
+		$javascript = new Javascript;
         return;
     }
 }
