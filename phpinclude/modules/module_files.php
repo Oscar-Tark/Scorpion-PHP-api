@@ -11,5 +11,15 @@
 		{
 			return str_replace("\n", "", $value);
 		}
+		
+		function save_POST_FILES($path)
+		{
+			foreach($_FILES as $file)
+			{
+				if(is_uploaded_file($file['tmp_name']) === true)
+					move_uploaded_file($file['tmp_name'], $path . $file['name']);
+			}
+			return;
+		}
 	}
 ?>

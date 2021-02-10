@@ -1,3 +1,4 @@
+//Change ASAP to const
 class Ajax
 {
     send_ajax(request, token, concat, custom_data)
@@ -89,4 +90,39 @@ class Ajax
 		catch{}
 		return;
 	}
+}
+
+const send_ajax_files = (file) =>
+{
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function()
+        {
+            if(this.readyState === 4 && this.status === 200)
+            {
+				///DEBUG!
+				//Localhost mixes up localhost storage variable "service" due to all websites being on the same domain
+                ///<--
+                var JSON_= JSON.parse(this.responseText);
+                if(JSON_.TYPE == 'RESULT')
+                {
+					
+				}
+				return;
+            }
+        };
+
+        try
+        {
+			///DEBUG!
+			console.log("AJAX request in execution | " + file + "££" + "upload.php" + "££");
+			///<--
+            xmlhttp.open("POST", "./upload.php", true);
+            xmlhttp.setRequestHeader('Content-type', 'multipart/form-data');
+            xmlhttp.send(encodeURIComponent(file));
+        }
+        catch(e)
+        {
+            console.log("An error occured [" + e + "]");
+        }
+        return;
 }
