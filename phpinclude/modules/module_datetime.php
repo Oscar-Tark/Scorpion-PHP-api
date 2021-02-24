@@ -23,6 +23,17 @@ class Dates
 		return date("Y_m_d");
 	}
 	
+	function date_today_customseperator($seperator)
+	{
+		return date("Y" . $seperator . "m" . $seperator . "d");
+	}
+	
+	//For javascript
+	function date_todayjs()
+	{
+		return date("Y-m-d");
+	}
+	
 	function timestamp()
 	{
 		return date('Y-m-d H:i:s');

@@ -19,5 +19,13 @@ class Javascript
 		echo("<script type='text/javascript'>" . $javascript . "</script>");
 		return;
 	}
+	
+	
+	
+	function js_out_notags($javascript)
+	{
+		echo($javascript);
+		return;
+	}
 }
 ?>
