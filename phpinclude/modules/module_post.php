@@ -23,15 +23,29 @@ class Servicepost
     //Gets all post values, checks them and sends back an array
     function check_POSTALL_AS_ARRAY()
     {
+		global $filters;
 		$n = 0; $array = array();
 		foreach($_POST as $post_element)
 		{
-			array_push($array, $post_element);
+			array_push($array, $filters->filter($post_element));
 			$n++;
 		}
 		return $array;
 	}
 
+    //Gets all get values, checks them and sends back an array
+    function check_GETALL_AS_ARRAY()
+    {
+		global $filters;
+		$n = 0; $array = array();
+		foreach($_GET as $get_element)
+		{
+			array_push($array, $filters->filter($get_element));
+			$n++;
+		}
+		return $array;
+	}
+	
     function check_POST_format($value)
     {
         echo(date('dd-mm-yyyy hh:mm:ss', $value));

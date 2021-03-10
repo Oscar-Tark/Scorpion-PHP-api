@@ -68,6 +68,11 @@ function sql_set($table, $values)
     return $this->send("INSERT INTO ".$table." VALUES(".$values.");--");
 }
 
+function sql_delete_row($table, $conditions)
+{
+	return $this->send("DELETE FROM " . $table . " WHERE " . $conditions . " LIMIT 1");	
+}
+
 function sql_max($table, $column)
 {
     return $this->send("SELECT MAX(".$column.") AS maximum_v FROM ".$table);

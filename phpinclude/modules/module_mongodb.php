@@ -5,7 +5,11 @@ class Mongodb
 	function __construct($domain, $port)
 	{
 		//localhost:27017
-		$this->mongodb = new MongoDB\Driver\Manager("mongodb://".$domain.":".$port);
+		try
+		{
+			$this->mongodb = new MongoDB\Driver\Manager("mongodb://".$domain.":".$port);
+		}
+		catch(exception $e){}
 		return;
 	}
 	

@@ -20,7 +20,11 @@ class Javascript
 		return;
 	}
 	
-	
+	function js_new_location($new_location)
+	{
+		echo("<script type='text/javascript'>document.location='" . $new_location . "';</script>");
+		return;
+	}
 	
 	function js_out_notags($javascript)
 	{
