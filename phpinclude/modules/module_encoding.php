@@ -15,5 +15,10 @@ class Encoding
     {
         return utf8_encode($data);
     }
+    
+    function corrected_index($index)
+    {
+		return (((int)$index)-1);
+	}
 }
 ?>

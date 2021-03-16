@@ -28,5 +28,12 @@ class Services
 			include_once($filename);
 		return;
 	}
+	
+	function load_modules_concatenation($concatenation, $project)
+	{
+		foreach(glob(($concatenation . "scorpion_" . $project . "/modules/*.php")) as $filename)
+			include_once($filename);
+		return;
+	}
 }
 ?>

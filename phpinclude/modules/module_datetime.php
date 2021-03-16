@@ -28,6 +28,16 @@ class Dates
 		return date("Y" . $seperator . "m" . $seperator . "d");
 	}
 	
+	function add_hours($time, $hours)
+	{
+		return date("H:i", strtotime($time . " +".$hours."hours"));
+	}
+	
+	function to_time($datetime)
+	{
+        return date("H:i", strtotime($datetime));
+	}
+	
 	//For javascript
 	function date_todayjs()
 	{

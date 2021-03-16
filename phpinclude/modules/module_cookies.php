@@ -21,16 +21,17 @@ class Cookies
 		return;
 	}
 
-	function set_cookie_($cookie_name, $value, $project)
+	function set_cookie_($cookie_name, $value, $project, $domain)
 	{
 		//Check if php 7.2 or 7.3
 		if (version_compare(PHP_VERSION, '7.3.0', '<'))
 			setcookie($cookie_name, $value, time() + (86400 * 30), $this->cookie_path($project) . "; samesite=strict");
 		else
-			setcookie($cookie_name, $value, time() + (86400 * 30), [
+			//setcookie ($cookie_name, $value, time() + (86400 * 30), $this->cookie_path($project), $domain, false, false);
+			setcookie($cookie_name, $value, [
 				'expires' => time() + (86400 * 3),
-				'path' => $this->cookie_path($project),
-				'domain' => 'www.cleanerei.com',
+				'path' => /*$this->cookie_path($project)*/'/',
+				'domain' => $domain,
 				'secure' => true,
 				'httponly' => true,
 				'samesite' => 'Strict',
@@ -38,10 +39,10 @@ class Cookies
 		return;
 	}
 	
-	function renew_cookie($cookie_name, $project)
+	function renew_cookie($cookie_name, $project, $domain)
 	{
 		$cookie = $this->check_cookie("/", $cookie_name);
-		$this->set_cookie_($cookie_name, $cookie, $project);
+		$this->set_cookie_($cookie_name, $cookie, $project, $domain);
 		return;
 	}
 	
