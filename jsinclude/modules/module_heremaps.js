@@ -18,7 +18,7 @@ const draw_HERE_suggestion_box = (JSONelement, destination, final_input) =>
   if(!ifnull(JSONelement))
   {
 	  console.log(final_input);
-		document.getElementById(destination).innerHTML = '<div id="here_results_box" onclick="getElementById(\'here_maps_input\').value = \''+JSONelement+'\'; clear_innerHTML(\'here_results\');"><div class="here_suggestion"><label>'+ JSONelement + '</label></div></div>';
+		document.getElementById(destination).innerHTML = '<div id="here_results_box" onclick="getElementById(\'here_maps_input\').value = \''+JSONelement+'\'; document.getElementById(\'here_results\').innerHTML=\'\';"><div class="here_suggestion"><label>'+ JSONelement + '</label></div></div>';
   }
   else
 	document.getElementById(destination).innerHTML = '<div id="here_results_box"><label>Address not found</label></div>';
