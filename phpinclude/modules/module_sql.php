@@ -147,7 +147,7 @@ function create_settings($user, $password, $host, $port, $schema, $table, $token
         global $service_elements, $sql_user, $json;
         $link = new mysqli($service_elements['HOST'], $sql_user['USER'], $sql_user['PASS'], $service_elements['DB']) or die("MYSQL: Unable to connect to the specific host. ERROR: ".mysql_error());
 
-        $link->set_charset('utf8_swedish_ci');
+        $link->set_charset('utf8');
         if ($link->connect_errno)
         {
             die($json->JEO("Mysql error!"));

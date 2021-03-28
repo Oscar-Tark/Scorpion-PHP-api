@@ -30,7 +30,7 @@ class Curler
     {
         global $curl_elements, $json, $service_elements;
         $ch = curl_init();
-        $params=$data;
+        //$params=$data;
         
         $defaults = array(
             CURLOPT_URL => $URL,

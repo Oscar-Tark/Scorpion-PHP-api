@@ -9,4 +9,9 @@ class Stripe
 		include_once($path);
 		return;
 	}
+	
+	function charge()
+	{
+		return;
+	}
 }

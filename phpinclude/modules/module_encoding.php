@@ -20,5 +20,10 @@ class Encoding
     {
 		return (((int)$index)-1);
 	}
+	
+	function spaces_to_format($data)
+	{
+		return str_replace(" ", "%20", $data);
+	}
 }
 ?>

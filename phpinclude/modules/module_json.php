@@ -13,7 +13,7 @@ class Servicejson
     function to_JSON()
     {
         global $response_;
-        return json_encode($response_);
+        return json_encode($response_, JSON_UNESCAPED_UNICODE);
     }
     
     function from_JSON($data)
@@ -72,7 +72,7 @@ class GenericJSON
 {
 	function to_json($array)
 	{
-        return json_encode($array);
+        return json_encode($array, JSON_UNESCAPED_UNICODE);
     }
     
     function from_JSON($JSON)

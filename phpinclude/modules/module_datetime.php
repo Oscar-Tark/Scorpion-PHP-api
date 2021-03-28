@@ -33,6 +33,11 @@ class Dates
 		return date("H:i", strtotime($time . " +".$hours."hours"));
 	}
 	
+	function add_week($time, $weeks)
+	{
+		return date("Y-m-d", strtotime($time . " +".$weeks."week"));
+	}
+	
 	function to_time($datetime)
 	{
         return date("H:i", strtotime($datetime));
