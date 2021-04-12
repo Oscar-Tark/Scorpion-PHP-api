@@ -12,6 +12,11 @@ class Dates
     {
         return date("Y-m-d", strtotime($date));
     }
+    
+    function today_sql_date()
+    {
+        return date("Y-m-d");
+	}
 
     function to_sql_datetime($datetime)
     {

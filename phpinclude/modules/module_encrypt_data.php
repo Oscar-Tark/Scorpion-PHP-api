@@ -1,6 +1,13 @@
 <?php
 class Encryptor
 {
+	private $len;
+	function __construct()
+	{
+		$this->len = 15;
+		return;
+	}
+	
 	function encrypt($data)
 	{
 		$hash = hash("sha256", $data);
@@ -12,24 +19,25 @@ class Encryptor
         return password_hash($password, PASSWORD_DEFAULT);
     }
 
+	//(hash, string_pwd)
     function verify_password($password, $input)
     {
         return password_verify($input, $password);
     }
 
-    function generateRandomString($length = 1024)
+    function generateRandomString()
     {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);
         $randomString = '';
-        for ($i = 0; $i < $length; $i++)
+        for ($i = 0; $i < $this->len; $i++)
             $randomString .= $characters[rand(0, $charactersLength - 1)];
         return $randomString;
     }
     
     function getRandomStringDefaultLength()
     {
-		return 1024;
+		return $this->len;
 	}
 
 	//Always use with generateRandomString

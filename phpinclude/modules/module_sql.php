@@ -54,6 +54,12 @@ function sql_get($table, $conditions)
     return $this->send("SELECT * FROM ".$table." WHERE ".$conditions.";--");
 }
 
+function sql_get_paginated($table, $conditions, $orderby, $offset, $limit)
+{
+    //Takes: string
+    return $this->send("SELECT * FROM ".$table." WHERE ".$conditions." ORDER BY ".$orderby." LIMIT ".$limit." OFFSET ".$offset.";--");
+}
+
 function sql_update($table, $conditions, $values)
 {
     //Takes: string, string, string

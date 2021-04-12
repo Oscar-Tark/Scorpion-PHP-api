@@ -79,7 +79,7 @@ class Curler
     {
         global $curl_elements, $json, $service_elements;
         $ch = curl_init();
-        $params=["Data"=>$data, "currentDate"=>$date];
+        $params=["data"=>$data, "currentDate"=>$date];
         
         $defaults = array(
             CURLOPT_URL => $URL,
@@ -87,6 +87,7 @@ class Curler
             CURLOPT_POSTFIELDS => $params,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_TIMEOUT => 5,
+            CURLOPT_HEADER => false
         );
         curl_setopt_array($ch, $defaults);
         $result = curl_exec($ch);

@@ -22,5 +22,17 @@ class Types
 	    	return true;
         return false;
     }
+    
+    function isequalvalue($variable1, $variable2)
+    {
+		if($variable1 == $variable2)
+			return true;
+		return false;
+	}
+	
+	function adjustedarrayindex($value)
+	{
+		return (((int)$value)-1);
+	}
 }
 ?>
