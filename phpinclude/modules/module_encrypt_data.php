@@ -48,9 +48,9 @@ class Encryptor
 	    if(!$types->ifnull($sql->return_first_row($sql->sql_get($table, $column."='".$string."'"))))
 	    {
 		    $var = 0;
-		    while ($var <= 3)
+		    while ($var <= 8)
 		    {
-			    if($var == 3)
+			    if($var == 8)
 					die("Unable to create transaction token");
 			
 			    $random = generateRandomString();

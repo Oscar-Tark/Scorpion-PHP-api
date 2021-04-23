@@ -20,14 +20,21 @@
 		{
 			return str_replace("\n", "", $value);
 		}
+		//basename ( string $path , string $suffix = "" )
+		
+		function get_file_names_array($path)
+		{
+			$files = array();
+			foreach(glob($path . "*.*") as $filename)
+				array_push($files, array($filename, basename($filename)));
+			return $files;
+		}
 		
 		function get_file_names($path)
 		{
 			$files = array();
-			foreach(glob($path) as $filename)
-			{
+			foreach(glob($path . "*.*") as $filename)
 				array_push($files, $filename);
-			}
 			return $files;
 		}
 		
@@ -36,29 +43,40 @@
 			$file_validity = null;
 			foreach($_FILES as $file)
 			{
+				//if(file_exists($path . $file['name']))
+				//	return array(false, "fil_twice");
 				if(is_uploaded_file($file['tmp_name']) === true)
-				{
-					//$file_validity = $this->check_file_validity($file);
-					//if($file_validity[0] === true)
 						move_uploaded_file($file['tmp_name'], $path . $file['name']);
-					//else
-					//	return $file_validity;
-				}
 			}
-			return; //array(true, "success");
+			return array(true, "fil_ok");
 		}
 		
 		function check_files_validity()
 		{
 			$status = true;
-			$message = "no message";
-			
+			$message = 'fil_ok';
+			$occurance = 0;
 			foreach($_FILES as $file)
 			{
+				//Check file size
+				$occurance = 0;
 				if($file['size'] > $this->file_max_size)
 				{
 					$status = false;
-					$message = "A file chosen has a file size that exceeds 2MB. The maximum allowed file size is 2MB";
+					$message = 'fil_size';
+					break;
+				}
+				
+				foreach($_FILES as $file_occurance)
+				{
+					if($file['name'] == $file_occurance['name'])
+						$occurance++;
+				}
+				
+				if($occurance > 1)
+				{
+					$status = false;
+					$message = 'fil_twice';
 					break;
 				}
 			}
