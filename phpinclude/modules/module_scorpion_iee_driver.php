@@ -1,6 +1,12 @@
 <?php
 class ScorpionIEE
 {
+	private $ip, $port, $uname, $password, $session;
+	function __construct()
+	{
+		
+	}
+	
 	function set_command($command, $ip, $port)
 	{
 		//Hard coded to 8922
@@ -33,5 +39,15 @@ class ScorpionIEE
 	{
 		return str_replace("HTTP / 1.1 200 OK", "", $response);
 	}
+}
+
+class ScorpionEncryption
+{
+	
+}
+
+class ScorpionElements
+{
+	
 }
 ?>
